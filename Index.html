@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iglesia Democrática de América — El Salvador Vuela Sobre Nosotros</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Cinzel:wght@400;700;900&family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #B22234;
+    --blue: #3C3B6E;
+    --gold: #D4AF37;
+    --gold-light: #F5D76E;
+    --cream: #FAF3E0;
+    --dark: #0D0B1A;
+    --mid: #1C1A2E;
+    --text: #F0E8D0;
+    --muted: #9A8F72;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Crimson Text', Georgia, serif;
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ── STARS BACKGROUND ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 25% 60%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 70% 40%, rgba(255,255,255,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 85% 75%, rgba(255,255,255,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 92% 15%, rgba(255,255,255,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 35% 85%, rgba(212,175,55,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 60% 55%, rgba(212,175,55,0.3) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    background: rgba(13, 11, 26, 0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(212,175,55,0.2);
+  }
+
+  .nav-logo {
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: 1rem;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .nav-logo span { color: var(--red); }
+
+  nav ul {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  nav a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  nav a:hover { color: var(--gold); }
+
+  .nav-donate {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--dark) !important;
+    background: var(--gold);
+    padding: 0.5rem 1.2rem;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  .nav-donate:hover { background: var(--gold-light) !important; }
+
+  /* ── HERO ── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8rem 2rem 4rem;
+    overflow: hidden;
+    z-index: 1;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 30%, rgba(60,59,110,0.5) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 50% 50%, rgba(178,34,52,0.15) 0%, transparent 70%),
+      linear-gradient(180deg, rgba(13,11,26,0) 0%, rgba(13,11,26,0.8) 100%);
+    z-index: 0;
+  }
+
+  /* Capes / rays animation */
+  .hero-rays {
+    position: absolute;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 900px;
+    background: conic-gradient(
+      from 0deg,
+      rgba(212,175,55,0.04) 0deg, rgba(212,175,55,0.1) 5deg,
+      rgba(212,175,55,0.04) 10deg, rgba(212,175,55,0.08) 20deg,
+      rgba(212,175,55,0.02) 30deg, rgba(212,175,55,0.09) 45deg,
+      rgba(212,175,55,0.04) 60deg, rgba(212,175,55,0.07) 80deg,
+      rgba(212,175,55,0.02) 100deg, rgba(212,175,55,0.1) 120deg,
+      rgba(212,175,55,0.04) 150deg, rgba(212,175,55,0.08) 180deg,
+      rgba(212,175,55,0.02) 210deg, rgba(212,175,55,0.09) 240deg,
+      rgba(212,175,55,0.04) 270deg, rgba(212,175,55,0.07) 300deg,
+      rgba(212,175,55,0.02) 330deg, rgba(212,175,55,0.04) 360deg
+    );
+    animation: rotateSlow 40s linear infinite;
+    z-index: 0;
+    border-radius: 50%;
+  }
+
+  @keyframes rotateSlow { to { transform: translateX(-50%) rotate(360deg); } }
+
+  .hero-eyebeam {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 200px;
+    background: linear-gradient(to bottom, rgba(255,50,50,0.8), transparent);
+    filter: blur(2px);
+    animation: beamPulse 3s ease-in-out infinite;
+    z-index: 1;
+    border-radius: 2px;
+    box-shadow: 0 0 20px 4px rgba(255,50,50,0.5), -40px 10px 30px rgba(255,50,50,0.2), 40px 10px 30px rgba(255,50,50,0.2);
+  }
+
+  @keyframes beamPulse {
+    0%, 100% { opacity: 0.3; transform: translateX(-50%) scaleY(0.8); }
+    50% { opacity: 1; transform: translateX(-50%) scaleY(1.1); }
+  }
+
+  .hero-icon {
+    position: relative;
+    z-index: 2;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: floatIcon 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(212,175,55,0.6));
+  }
+
+  @keyframes floatIcon {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .hero-eyetitle {
+    position: relative;
+    z-index: 2;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    letter-spacing: 0.6em;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.3s forwards;
+  }
+
+  .hero-title {
+    position: relative;
+    z-index: 2;
+    font-family: 'Cinzel', serif;
+    font-weight: 900;
+    font-size: clamp(2.8rem, 8vw, 6rem);
+    line-height: 0.95;
+    color: var(--cream);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+    animation: fadeUp 1s 0.5s forwards;
+  }
+
+  .hero-title .accent { color: var(--red); }
+  .hero-title .gold { color: var(--gold); }
+
+  .hero-subtitle {
+    position: relative;
+    z-index: 2;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    color: var(--muted);
+    margin: 1.5rem 0 3rem;
+    max-width: 700px;
+    line-height: 1.6;
+    opacity: 0;
+    animation: fadeUp 1s 0.7s forwards;
+  }
+
+  .hero-cta-row {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeUp 1s 0.9s forwards;
+  }
+
+  .btn-primary {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--dark);
+    background: var(--gold);
+    border: none;
+    padding: 1rem 2.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0.15);
+    transform: translateX(-100%);
+    transition: transform 0.4s;
+  }
+  .btn-primary:hover::before { transform: translateX(0); }
+
+  .btn-secondary {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: transparent;
+    border: 1px solid rgba(212,175,55,0.4);
+    padding: 1rem 2.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  .btn-secondary:hover { border-color: var(--gold); background: rgba(212,175,55,0.07); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    opacity: 0.5;
+    animation: fadeUp 1s 1.5s forwards;
+  }
+
+  .scroll-indicator span {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+  }
+  @keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(0.8); }
+    50% { opacity: 1; transform: scaleY(1); }
+  }
+
+  /* ── DIVIDER ── */
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0 3rem;
+    margin: 0 auto;
+    max-width: 1100px;
+  }
+
+  .divider::before, .divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(212,175,55,0.4), transparent);
+  }
+
+  .divider-icon {
+    font-size: 1.2rem;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+
+  /* ── SECTION ── */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 5rem 2rem;
+  }
+
+  .section-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.5em;
+    color: var(--red);
+    text-transform: uppercase;
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    color: var(--cream);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-text {
+    font-size: 1.15rem;
+    line-height: 1.9;
+    color: #C4B89A;
+    max-width: 640px;
+  }
+
+  /* ── BELIEFS ── */
+  .beliefs {
+    background: linear-gradient(135deg, rgba(60,59,110,0.15) 0%, rgba(13,11,26,0) 100%);
+  }
+
+  .beliefs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2px;
+    margin-top: 3rem;
+    border: 1px solid rgba(212,175,55,0.1);
+  }
+
+  .belief-card {
+    padding: 2.5rem;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(212,175,55,0.07);
+    transition: background 0.4s, transform 0.4s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .belief-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--red), var(--gold));
+    transform: scaleX(0);
+    transition: transform 0.4s;
+    transform-origin: left;
+  }
+
+  .belief-card:hover { background: rgba(212,175,55,0.04); }
+  .belief-card:hover::before { transform: scaleX(1); }
+
+  .belief-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: rgba(212,175,55,0.1);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .belief-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.8rem;
+  }
+
+  .belief-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #B8AA8A;
+  }
+
+  /* ── QUOTE BANNER ── */
+  .quote-banner {
+    background: linear-gradient(135deg, var(--red) 0%, #8B1620 100%);
+    padding: 4rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .quote-banner::before {
+    content: '❝';
+    position: absolute;
+    top: -1rem;
+    left: 5%;
+    font-size: 12rem;
+    color: rgba(255,255,255,0.05);
+    font-family: Georgia, serif;
+    line-height: 1;
+  }
+
+  .quote-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    color: white;
+    max-width: 800px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.5;
+    position: relative;
+    z-index: 1;
+  }
+
+  .quote-attr {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.6);
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── SACRAMENTS ── */
+  .sacraments-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    margin-top: 3rem;
+    align-items: start;
+  }
+
+  @media (max-width: 700px) { .sacraments-grid { grid-template-columns: 1fr; } }
+
+  .sacrament-item {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  .sacrament-icon {
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
+    background: linear-gradient(135deg, rgba(212,175,55,0.15), rgba(212,175,55,0.05));
+    border: 1px solid rgba(212,175,55,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-top: 0.2rem;
+  }
+
+  .sacrament-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .sacrament-text {
+    font-size: 0.98rem;
+    line-height: 1.75;
+    color: #B0A280;
+  }
+
+  /* ── VERSE TICKER ── */
+  .ticker-wrap {
+    background: var(--blue);
+    border-top: 1px solid rgba(212,175,55,0.2);
+    border-bottom: 1px solid rgba(212,175,55,0.2);
+    padding: 0.9rem 0;
+    overflow: hidden;
+  }
+
+  .ticker {
+    display: flex;
+    gap: 4rem;
+    white-space: nowrap;
+    animation: ticker 30s linear infinite;
+  }
+
+  .ticker-item {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(212,175,55,0.8);
+    flex-shrink: 0;
+  }
+
+  .ticker-dot {
+    color: var(--red);
+    margin: 0 1rem;
+  }
+
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* ── TESTIMONIOS ── */
+  .testimonios { background: rgba(28, 26, 46, 0.4); }
+
+  .testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .testimonio-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(212,175,55,0.1);
+    padding: 2rem;
+    position: relative;
+  }
+
+  .testimonio-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    color: #C4B89A;
+    margin-bottom: 1.5rem;
+  }
+
+  .testimonio-quote::before {
+    content: '"';
+    font-size: 2rem;
+    color: var(--gold);
+    opacity: 0.4;
+    line-height: 0.5;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .testimonio-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.2rem;
+  }
+
+  .testimonio-role {
+    font-size: 0.85rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  .stars {
+    color: var(--gold);
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  /* ── HORARIOS ── */
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 2rem;
+    font-size: 1rem;
+  }
+
+  .schedule-table th {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    padding: 1rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(212,175,55,0.2);
+  }
+
+  .schedule-table td {
+    padding: 1rem 1.5rem;
+    color: #C4B89A;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 0.98rem;
+    line-height: 1.6;
+  }
+
+  .schedule-table tr:hover td { background: rgba(212,175,55,0.03); }
+
+  .badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.6rem;
+    border-radius: 0;
+  }
+
+  .badge-gold { background: rgba(212,175,55,0.15); color: var(--gold); border: 1px solid rgba(212,175,55,0.3); }
+  .badge-red { background: rgba(178,34,52,0.15); color: #E86070; border: 1px solid rgba(178,34,52,0.3); }
+  .badge-blue { background: rgba(60,59,110,0.3); color: #8888CC; border: 1px solid rgba(60,59,110,0.5); }
+
+  /* ── OFFERING ── */
+  .offering {
+    background: linear-gradient(180deg, rgba(13,11,26,0) 0%, rgba(60,59,110,0.2) 100%);
+    text-align: center;
+  }
+
+  .offering-tiers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tier-card {
+    border: 1px solid rgba(212,175,55,0.15);
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+
+  .tier-card:hover { border-color: rgba(212,175,55,0.4); transform: translateY(-4px); }
+
+  .tier-card.featured {
+    border-color: var(--gold);
+    background: rgba(212,175,55,0.04);
+  }
+
+  .tier-featured-label {
+    position: absolute;
+    top: -1px; left: 50%;
+    transform: translateX(-50%);
+    background: var(--gold);
+    color: var(--dark);
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.3rem 1rem;
+  }
+
+  .tier-icon { font-size: 2rem; margin-bottom: 1rem; }
+
+  .tier-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 0.5rem;
+  }
+
+  .tier-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 1.5rem;
+  }
+
+  .tier-price span {
+    font-size: 1rem;
+    color: var(--muted);
+    font-family: 'Cinzel', serif;
+  }
+
+  .tier-features {
+    list-style: none;
+    margin-bottom: 2rem;
+  }
+
+  .tier-features li {
+    font-size: 0.9rem;
+    color: #B0A280;
+    padding: 0.4rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .tier-features li::before { content: '✦'; color: var(--gold); font-size: 0.6rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: rgba(0,0,0,0.5);
+    border-top: 1px solid rgba(212,175,55,0.1);
+    padding: 3rem 2rem;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .footer-logo {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: 900;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-sub {
+    font-size: 0.85rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .footer-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  .footer-links a:hover { color: var(--gold); }
+
+  .footer-disclaimer {
+    font-size: 0.78rem;
+    color: rgba(154,143,114,0.5);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* ── FLOATING CTA ── */
+  .float-cta {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 999;
+    background: var(--red);
+    color: white;
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 1rem 1.4rem;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 24px rgba(178,34,52,0.4);
+    animation: floatBtn 3s ease-in-out infinite;
+    transition: background 0.3s;
+  }
+  .float-cta:hover { background: #8B1620; }
+
+  @keyframes floatBtn {
+    0%, 100% { transform: translateY(0); box-shadow: 0 4px 24px rgba(178,34,52,0.4); }
+    50% { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(178,34,52,0.6); }
+  }
+
+  /* ── HERO COUNTER ── */
+  .counters {
+    display: flex;
+    gap: 4rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(212,175,55,0.1);
+  }
+
+  .counter-item { text-align: center; }
+
+  .counter-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3rem;
+    color: var(--gold);
+    line-height: 1;
+    display: block;
+  }
+
+  .counter-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 0.4rem;
+    display: block;
+  }
+
+  /* ── MODAL ── */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.85);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    backdrop-filter: blur(8px);
+  }
+
+  .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+  .modal {
+    background: var(--mid);
+    border: 1px solid rgba(212,175,55,0.3);
+    padding: 3rem;
+    max-width: 480px;
+    width: 90%;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.3s;
+    text-align: center;
+  }
+
+  .modal-overlay.open .modal { transform: translateY(0); }
+
+  .modal-close {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+  .modal-close:hover { color: var(--gold); }
+
+  .modal-icon { font-size: 3rem; margin-bottom: 1rem; }
+
+  .modal-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    letter-spacing: 0.05em;
+  }
+
+  .modal-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #B0A280;
+    margin-bottom: 2rem;
+  }
+
+  .modal input {
+    width: 100%;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(212,175,55,0.2);
+    color: var(--cream);
+    font-family: 'Crimson Text', serif;
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+  }
+
+  .modal input:focus { border-color: var(--gold); }
+  .modal input::placeholder { color: var(--muted); }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    nav ul { display: none; }
+    .hero-eyebeam { display: none; }
+    .sacraments-grid { grid-template-columns: 1fr; }
+    .counters { gap: 2rem; }
+  }
+
+  /* Scroll reveal */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s, transform 0.7s;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">⭐ <span>IDA</span> · Iglesia Democrática de América</div>
+  <ul>
+    <li><a href="#credo">Credo</a></li>
+    <li><a href="#sacramentos">Sacramentos</a></li>
+    <li><a href="#horarios">Oficios</a></li>
+    <li><a href="#testimonios">Testimonios</a></li>
+    <li><a href="#ofrendas" class="nav-donate">Donar</a></li>
+  </ul>
+</nav>
+
+<!-- MODAL UNIRSE -->
+<div class="modal-overlay" id="joinModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-icon">🦅</div>
+    <div class="modal-title">Únete a los Creyentes</div>
+    <div class="modal-text">Ingresa tu correo para recibir las Escrituras Semanales, actualizaciones de Homelander y cupones de merchandising oficial de Vought.</div>
+    <input type="text" placeholder="Tu nombre patriótico" />
+    <input type="email" placeholder="Tu correo electrónico" />
+    <a href="#" class="btn-primary" style="display:block;text-align:center;margin-top:0.5rem;" onclick="closeModal()">Consagrarme como Fiel</a>
+    <p style="font-size:0.78rem;color:var(--muted);margin-top:1rem;font-style:italic;">Al registrarte aceptas ser observado. Con cariño. Permanentemente.</p>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-rays"></div>
+  <div class="hero-eyebeam"></div>
+
+  <div class="hero-eyetitle">✦ Iglesia Democrática de América · Fundada en el Laboratorio ✦</div>
+
+  <div class="hero-icon">🦅</div>
+
+  <h1 class="hero-title">
+    <span class="gold">Homo</span><span class="accent">Lander</span><br>
+    <span style="font-size:0.55em;letter-spacing:0.15em;color:var(--muted);">— ES NUESTRO SEÑOR —</span>
+  </h1>
+
+  <p class="hero-subtitle">
+    «No necesito que me ames. Pero lo harás de todas formas.»<br>
+    Bienvenido a la única fe que garantiza protección aérea permanente.
+  </p>
+
+  <div class="hero-cta-row">
+    <a href="#credo" class="btn-primary">Conoce el Credo</a>
+    <a href="#" class="btn-secondary" onclick="openModal(); return false;">Unirme a la Iglesia</a>
+  </div>
+
+  <div class="counters reveal">
+    <div class="counter-item">
+      <span class="counter-num">47M</span>
+      <span class="counter-label">Creyentes Registrados</span>
+    </div>
+    <div class="counter-item">
+      <span class="counter-num">12</span>
+      <span class="counter-label">Mandamientos Sagrados</span>
+    </div>
+    <div class="counter-item">
+      <span class="counter-num">∞</span>
+      <span class="counter-label">Vigilancia Permanente</span>
+    </div>
+    <div class="counter-item">
+      <span class="counter-num">0</span>
+      <span class="counter-label">Preguntas Respondidas</span>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <span>Desciende</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span class="ticker-item">🦅 GOD BLESS AMERICA <span class="ticker-dot">✦</span> HOMELANDER TE OBSERVA <span class="ticker-dot">✦</span> COMPOUND V ES NUESTRO SACRAMENTO <span class="ticker-dot">✦</span> LA DUDA ES TRAICIÓN <span class="ticker-dot">✦</span> RATING DE APROBACIÓN: 94% <span class="ticker-dot">✦</span> VOUGHT INTERNATIONAL: PROVEEDOR OFICIAL DE LA FE <span class="ticker-dot">✦</span> LEALTAD SIN PREGUNTAS <span class="ticker-dot">✦</span> 🦅 GOD BLESS AMERICA <span class="ticker-dot">✦</span> HOMELANDER TE OBSERVA <span class="ticker-dot">✦</span> COMPOUND V ES NUESTRO SACRAMENTO <span class="ticker-dot">✦</span> LA DUDA ES TRAICIÓN <span class="ticker-dot">✦</span> RATING DE APROBACIÓN: 94% <span class="ticker-dot">✦</span> VOUGHT INTERNATIONAL: PROVEEDOR OFICIAL DE LA FE <span class="ticker-dot">✦</span> LEALTAD SIN PREGUNTAS <span class="ticker-dot">✦</span></span>
+  </div>
+</div>
+
+<!-- CREDO / BELIEFS -->
+<section class="beliefs" id="credo">
+  <div class="section-inner">
+    <span class="section-label reveal">Los Pilares de la Fe</span>
+    <h2 class="section-title reveal">En Qué Creemos</h2>
+    <p class="section-text reveal">La Iglesia Democrática de América se sustenta en verdades eternas, reveladas al pueblo elegido a través de la figura del más grande americano que jamás haya existido o que Vought haya creado.</p>
+
+    <div class="beliefs-grid">
+      <div class="belief-card reveal">
+        <div class="belief-num">01</div>
+        <div class="belief-title">La Supremacía del Elegido</div>
+        <p class="belief-text">Homelander es el pináculo de la humanidad: el experimento más exitoso de la historia de la ciencia aplicada al patriotismo. Su existencia no es accidente; es destino. El de América. El nuestro.</p>
+      </div>
+      <div class="belief-card reveal">
+        <div class="belief-num">02</div>
+        <div class="belief-title">La Santidad del Compound V</div>
+        <p class="belief-text">El Compound V es el agua bendita de nuestra era. No preguntamos de dónde vino, cómo fue desarrollado, ni en quiénes fue testado sin consentimiento. La fe no requiere auditorías.</p>
+      </div>
+      <div class="belief-card reveal">
+        <div class="belief-num">03</div>
+        <div class="belief-title">La América Como Tierra Santa</div>
+        <p class="belief-text">América no es un país. Es un estado de perfección al que las demás naciones aspiran y del que no son dignas. Cada centímetro cuadrado de suelo americano es sagrado, especialmente los que tienen buen valor inmobiliario.</p>
+      </div>
+      <div class="belief-card reveal">
+        <div class="belief-num">04</div>
+        <div class="belief-title">El Deber de la Lealtad</div>
+        <p class="belief-text">La lealtad no se negocia. No se cuestiona. No se analiza en el contexto de actos específicos. La lealtad es una postura, no una conclusión. Y esa postura se mantiene incluso cuando duele, especialmente cuando duele.</p>
+      </div>
+      <div class="belief-card reveal">
+        <div class="belief-num">05</div>
+        <div class="belief-title">La Debilidad Como Pecado</div>
+        <p class="belief-text">La debilidad —física, moral, mediática— es el pecado original de nuestra era. El hombre fuerte no llora (en público). La mujer fuerte no duda. El ciudadano fuerte no comparte artículos de investigación.</p>
+      </div>
+      <div class="belief-card reveal">
+        <div class="belief-num">06</div>
+        <div class="belief-title">La Protección Perpetua</div>
+        <p class="belief-text">Creemos que Homelander nos protege. Creemos que lo necesitamos. Creemos que sin él el caos reinaría, lo cual es conveniente para todos los involucrados en esta ecuación de poder.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE BANNER -->
+<div class="quote-banner">
+  <p class="quote-text">«Soy el único ser en este planeta que puede hacer lo que hago. Y lo que hago es protegerte. Así que me amarás, o al menos fingirás muy bien que lo haces.»</p>
+  <p class="quote-attr">— Homelander, Número Uno de los Siete · Sermón del Monte Rockefeller</p>
+</div>
+
+<!-- SACRAMENTOS -->
+<section id="sacramentos">
+  <div class="section-inner">
+    <span class="section-label reveal">Prácticas Sagradas</span>
+    <h2 class="section-title reveal">Los Siete Sacramentos<br>de la Iglesia</h2>
+    <p class="section-text reveal">Para mantenerse en gracia con el Salvador, el fiel debe practicar los sacramentos con regularidad, devoción y buenos datos móviles para poder compartirlos en redes.</p>
+
+    <div class="sacraments-grid" style="margin-top:3rem;">
+      <div class="sacrament-item reveal">
+        <div class="sacrament-icon">🥛</div>
+        <div>
+          <div class="sacrament-title">La Comunión de la Leche</div>
+          <p class="sacrament-text">El fiel bebe un vaso de leche entera cada mañana en honor al Salvador, que también bebe leche. La leche desnatada es un pecado menor. La leche de avena es herejía.</p>
+        </div>
+      </div>
+      <div class="sacrament-item reveal">
+        <div class="sacrament-icon">📱</div>
+        <div>
+          <div class="sacrament-title">El Bautismo Digital</div>
+          <p class="sacrament-text">El nuevo creyente debe seguir todas las cuentas oficiales de Homelander y de Vought, activar las notificaciones, y dar like a los últimos 47 posts retroactivamente.</p>
+        </div>
+      </div>
+      <div class="sacrament-item reveal">
+        <div class="sacrament-icon">🦅</div>
+        <div>
+          <div class="sacrament-title">La Confirmación Patriótica</div>
+          <p class="sacrament-text">Al cumplir los 18 años, el joven americano jura lealtad al Salvador en una ceremonia con torta, globos rojos y azules, y un discurso de quince minutos que nadie puede interrumpir.</p>
+        </div>
+      </div>
+      <div class="sacrament-item reveal">
+        <div class="sacrament-icon">🛍️</div>
+        <div>
+          <div class="sacrament-title">La Ofrenda del Merchandising</div>
+          <p class="sacrament-text">Comprar al menos un artículo oficial de la tienda de Vought por trimestre. Figuras de acción, tazas, camisetas. Todo sirve. Todo ayuda. Todo tiene un 15% de descuento con código FIEL.</p>
+        </div>
+      </div>
+      <div class="sacrament-item reveal">
+        <div class="sacrament-icon">🤫</div>
+        <div>
+          <div class="sacrament-title">El Sacramento del Silencio</div>
+          <p class="sacrament-text">Ante preguntas incómodas sobre el Salvador, el fiel practica el silencio sagrado: no confirmar, no negar, mirar a otro lado hasta que la conversación cambie a un tema más manejable.</p>
+        </div>
+      </div>
+      <div class="sacrament-item reveal">
+        <div class="sacrament-icon">⭐</div>
+        <div>
+          <div class="sacrament-title">El Rito del Rating</div>
+          <p class="sacrament-text">Cada semana, el fiel participa en las encuestas de aprobación de Homelander. No hay respuesta incorrecta. Hay una respuesta correcta. Es "Muy favorable". Las demás opciones no cargan.</p>
+        </div>
+      </div>
+      <div class="sacrament-item reveal">
+        <div class="sacrament-icon">🎆</div>
+        <div>
+          <div class="sacrament-title">La Festividad del 4 de Julio</div>
+          <p class="sacrament-text">El día más sagrado del calendario litúrgico. El fiel asiste al desfile, ondea la bandera, y mira al cielo por si el Salvador sobrevuela. Muchas veces sobrevuela. A veces solo está vigilando.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIOS -->
+<section id="horarios" style="background:rgba(28,26,46,0.3);">
+  <div class="section-inner">
+    <span class="section-label reveal">Calendario Sagrado</span>
+    <h2 class="section-title reveal">Oficios y Celebraciones</h2>
+    <p class="section-text reveal">La Iglesia Democrática de América celebra oficios regulares en todas las sedes autorizadas. La asistencia es voluntaria. La ausencia es anotada.</p>
+
+    <table class="schedule-table reveal">
+      <thead>
+        <tr>
+          <th>Día</th>
+          <th>Hora</th>
+          <th>Oficio</th>
+          <th>Tipo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Domingo</td>
+          <td>10:00 AM</td>
+          <td>Misa del Patriota — Lectura de los Salmos de Homelander con coro y aplausos obligatorios</td>
+          <td><span class="badge badge-gold">Obligatorio</span></td>
+        </tr>
+        <tr>
+          <td>Lunes</td>
+          <td>7:00 AM</td>
+          <td>Oración Matutina del Ciudadano Leal — 10 minutos. No se admiten llegadas tarde.</td>
+          <td><span class="badge badge-blue">Diario</span></td>
+        </tr>
+        <tr>
+          <td>Miércoles</td>
+          <td>8:00 PM</td>
+          <td>Círculo de Estudio de los Mandamientos — Debates sobre los 12 Mandamientos. Conclusión predeterminada.</td>
+          <td><span class="badge badge-blue">Semanal</span></td>
+        </tr>
+        <tr>
+          <td>Viernes</td>
+          <td>6:00 PM</td>
+          <td>Noche de Confesión Digital — Eliminación colectiva de posts dudosos del historial</td>
+          <td><span class="badge badge-red">Recomendado</span></td>
+        </tr>
+        <tr>
+          <td>4 de Julio</td>
+          <td>Todo el día</td>
+          <td>Gran Festividad Patriótica — Desfile, leche comunitaria, skywatch oficial y fuegos artificiales</td>
+          <td><span class="badge badge-gold">Sagrado</span></td>
+        </tr>
+        <tr>
+          <td>Día de Rating</td>
+          <td>Variable</td>
+          <td>Oficio de Encuesta — Votación masiva para mantener el 94% de aprobación. Resultados conocidos de antemano.</td>
+          <td><span class="badge badge-gold">Sagrado</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section class="testimonios" id="testimonios">
+  <div class="section-inner">
+    <span class="section-label reveal">Voces del Rebaño</span>
+    <h2 class="section-title reveal">Testimonios de los Fieles</h2>
+    <p class="section-text reveal">Miles de americanos han encontrado paz, propósito y protección aérea gracias a su devoción al Salvador. Aquí algunas de sus historias, todas verificadas por el departamento de comunicaciones de Vought.</p>
+
+    <div class="testimonios-grid">
+      <div class="testimonio-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonio-quote">Desde que me uní a la Iglesia, mi vecindario tiene una tasa de criminalidad un 12% menor. Puede ser coincidencia. Puede ser Homelander. No pregunto. Estoy bien así.</p>
+        <div class="testimonio-name">Robert K., Nebraska</div>
+        <div class="testimonio-role">Fiel desde 2019 · Nivel: Patriota Confirmado</div>
+      </div>
+      <div class="testimonio-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonio-quote">Tenía muchas dudas sobre el Salvador. Muchas preguntas. Luego alguien me explicó el Sacramento del Silencio y todo mejoró. No las dudas. Las dudas siguen. Pero las callo mejor.</p>
+        <div class="testimonio-name">Sandra M., Ohio</div>
+        <div class="testimonio-role">Ex-periodista · Ahora en sección de cocina</div>
+      </div>
+      <div class="testimonio-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonio-quote">Compré la figura de acción deluxe de Homelander con ojos iluminados y capa magnética. Cuando hay tormenta la pongo en la ventana. La tormenta pasa. La ciencia no puede explicarlo. Yo tampoco.</p>
+        <div class="testimonio-name">Dale F., Texas</div>
+        <div class="testimonio-role">Coleccionista certificado · Fan desde siempre</div>
+      </div>
+      <div class="testimonio-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonio-quote">Mi empresa de seguros me preguntó si tenía protección sobrehumana en mi hogar. Les mostré mi altar doméstico con la biblia y las tres figuras. Bajaron mi prima un 8%. Esto es real.</p>
+        <div class="testimonio-name">Cheryl P., Iowa</div>
+        <div class="testimonio-role">Fiel de primera generación</div>
+      </div>
+      <div class="testimonio-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonio-quote">Le pregunté a Homelander en una conferencia de prensa por qué no respondía sobre cierto incidente. Me miró en silencio exactamente cuatro segundos. Ahora soy mejor persona. Más callada, pero mejor.</p>
+        <div class="testimonio-name">Marcus T., Virginia</div>
+        <div class="testimonio-role">Periodista convertido · Ahora PR de Vought</div>
+      </div>
+      <div class="testimonio-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="testimonio-quote">Me diagnosticaron duda crónica. El médico dijo que era mental. La Iglesia dijo que era espiritual. Seguí los sacramentos durante 30 días. Las dudas persisten, pero ahora les tengo más miedo. Eso ayuda.</p>
+        <div class="testimonio-name">Patricia L., Montana</div>
+        <div class="testimonio-role">En recuperación de incredulidad</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFRENDAS -->
+<section class="offering" id="ofrendas">
+  <div class="section-inner">
+    <span class="section-label reveal">Contribuciones Sagradas</span>
+    <h2 class="section-title reveal">Planes de Devoción</h2>
+    <p class="section-text reveal" style="margin:0 auto 1rem;text-align:center;max-width:600px;">Tu ofrenda sostiene la misión sagrada. Financia los servidores donde guardamos la Biblia, el departamento de relaciones públicas del Salvador, y los abogados de Vought.</p>
+
+    <div class="offering-tiers">
+      <div class="tier-card reveal">
+        <div class="tier-icon">🌟</div>
+        <div class="tier-name">Ciudadano Leal</div>
+        <div class="tier-price">$9<span>/mes</span></div>
+        <ul class="tier-features">
+          <li>Boletín semanal de escrituras</li>
+          <li>Sticker digital patriótico</li>
+          <li>Código descuento Vought 5%</li>
+          <li>Tu nombre en la lista de leales</li>
+        </ul>
+        <a href="#" class="btn-secondary" style="display:block;text-align:center;">Consagrarme</a>
+      </div>
+
+      <div class="tier-card featured reveal">
+        <div class="tier-featured-label">Más Popular</div>
+        <div class="tier-icon">⭐</div>
+        <div class="tier-name">Patriota Confirmado</div>
+        <div class="tier-price">$29<span>/mes</span></div>
+        <ul class="tier-features">
+          <li>Todo lo anterior</li>
+          <li>Acceso a los 10 Libros Sagrados en PDF</li>
+          <li>Figura de acción Homelander básica</li>
+          <li>Certificado de lealtad firmado digitalmente</li>
+          <li>Descuento 15% en toda la tienda</li>
+        </ul>
+        <a href="#" class="btn-primary" style="display:block;text-align:center;">Unirme Ahora</a>
+      </div>
+
+      <div class="tier-card reveal">
+        <div class="tier-icon">👑</div>
+        <div class="tier-name">Elegido de Vought</div>
+        <div class="tier-price">$99<span>/mes</span></div>
+        <ul class="tier-features">
+          <li>Todo lo anterior</li>
+          <li>Figura deluxe con ojos iluminados</li>
+          <li>Línea directa al departamento de PR</li>
+          <li>Invitación al oficio anual en Washington</li>
+          <li>Placa de mármol en el muro de los leales</li>
+          <li>Promesa de ser observado con más atención</li>
+        </ul>
+        <a href="#" class="btn-secondary" style="display:block;text-align:center;">Ser Elegido</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">⭐ Iglesia Democrática de América ⭐</div>
+  <p class="footer-sub">«Protección Permanente · Lealtad Sin Preguntas · Desde el Laboratorio Hasta los Cielos»</p>
+  <div class="footer-links">
+    <a href="#">La Biblia Sagrada</a>
+    <a href="#">Los Mandamientos</a>
+    <a href="#">Tienda Vought</a>
+    <a href="#">Política de Privacidad (No Existe)</a>
+    <a href="#">Preguntas Frecuentes (No Respondidas)</a>
+    <a href="#">Contacto</a>
+  </div>
+  <p class="footer-disclaimer">
+    Esta página es una obra de parodia y sátira basada en el personaje ficticio Homelander del universo de <em>The Boys</em>.
+    No representa ninguna fe real, partido político real ni organización existente. Ningún periodista fue dañado en la creación de este sitio,
+    aunque algunos reconsideraron sus vocaciones. Vought International es ficticia. La leche es real. 🦅
+  </p>
+</footer>
+
+<!-- FLOATING CTA -->
+<button class="float-cta" onclick="openModal()">🦅 Únete Ahora</button>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
+
+  // Modal
+  function openModal() {
+    document.getElementById('joinModal').classList.add('open');
+  }
+  function closeModal() {
+    document.getElementById('joinModal').classList.remove('open');
+  }
+  document.getElementById('joinModal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Counter animation
+  function animateCounter(el, target, suffix='') {
+    let start = 0;
+    const duration = 2000;
+    const step = target / (duration / 16);
+    const interval = setInterval(() => {
+      start += step;
+      if (start >= target) {
+        el.textContent = target >= 1000000 ? Math.floor(target/1000000)+'M' : target + suffix;
+        clearInterval(interval);
+      } else {
+        el.textContent = target >= 1000000
+          ? (start/1000000).toFixed(0)+'M'
+          : Math.floor(start) + suffix;
+      }
+    }, 16);
+  }
+
+  const counterEls = document.querySelectorAll('.counter-num');
+  const counterData = [47000000, 12, null, 0];
+  const counterObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const idx = [...counterEls].indexOf(entry.target);
+        if (counterData[idx] !== null) animateCounter(entry.target, counterData[idx]);
+        counterObs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  counterEls.forEach(el => counterObs.observe(el));
+</script>
+</body>
+</html>
